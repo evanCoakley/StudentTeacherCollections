@@ -1,36 +1,85 @@
 package com.example;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
+
 
 public class Main {
 
+
     public static void main(String[] args) {
-	// write your code here
+
+
         List<Student> studentlist = new ArrayList<>();
+        List<Teacher> teacherList = new ArrayList<>();
+        HashSet<Student> studentSet1 = new HashSet<>();
+        HashSet<Student> studentSet2 = new HashSet<>();
+        HashSet<Student> studentSet3 = new HashSet<>();
+        HashMap<Teacher, HashSet<Student>> studentTeacherMap = new HashMap<>();
 
-        studentlist.add(new Student("Sally", "Fields",1, 1));
-        studentlist.add(new Student("Englebert", "Humperdink",2,1));
-        studentlist.add(new Student("Rick", "James", 3,1));
-        studentlist.add(new Student("Zbigniew", "Brzezinski", 4, 1));
-        studentlist.add(new Student("Milton", "Friedman", 5, 1));
-        studentlist.add(new Student("John","Keynes", 6, 1));
-        studentlist.add(new Student("Dante", "Alighieri", 7, 1));
-        studentlist.add(new Student("Leon", "Trotsky", 8,1));
-        studentlist.add(new Student("John", "Milton", 9, 1));
-        studentlist.add(new Student("Duke", "Ellington", 10, 1));
-        studentlist.add(new Student("Miles", "Davis", 11, 1));
-        studentlist.add(new Student("Tyler", "Durden", 12,1));
-        studentlist.add(new Student("Napoleon", "Bonaparte", 13, 1));
-        studentlist.add(new Student("Harriet", "Stowe", 14, 1));
-        studentlist.add(new Student("Emily", "Bronte", 15, 1));
 
-        List<Teacher>teacherList = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            Student student = new Student(i + 1, 1, "First", "Last");
+            studentlist.add(student);
 
-        teacherList.add(new Teacher("John", "Keating", 1, 1));
-        teacherList.add(new Teacher("Louanne", "Johnson", 2, 1));
-        teacherList.add(new Teacher("Maurice", "Phipps", 3, 1));
+            if (i < 5) {
+                studentSet1.add(student);
+            } else if (i < 10) {
+                studentSet2.add(student);
+            } else if (i < 15) {
+                studentSet3.add(student);
+            }
+        }
+        for (int i = 30; i < 33; i++) {
+            Teacher teacher = new Teacher(i + 1, 1, "TFirst", "TLast");
+            teacherList.add(teacher);
+        }
 
-        
+        studentTeacherMap.put(teacherList.get(0), studentSet1);
+
+        studentTeacherMap.put(teacherList.get(1), studentSet2);
+
+        studentTeacherMap.put(teacherList.get(2), studentSet3);
+
+
+        for (Teacher teacher : studentTeacherMap.keySet()) {
+            System.out.println("Teacher ID = " + teacher.getId());
+        }
+        System.out.println();
+
+        for ( Map.Entry<Teacher, HashSet<Student>> entry : studentTeacherMap.entrySet()) {
+            System.out.println(entry.getKey().getId());
+
+            for ( Student student : entry.getValue()) {
+                System.out.println("Student ID = " + student.getId());
+
+            }
+        }
+
+
+//        studentlist.add(new Student("Sally", "Fields"));
+//        studentlist.add(new Student("Englebert", "Humperdink"));
+//        studentlist.add(new Student("Rick", "James"));
+//        studentlist.add(new Student("Zbigniew", "Brzezinski"));
+//        studentlist.add(new Student("Milton", "Friedman"));
+//        studentlist.add(new Student("John", "Keynes"));
+//        studentlist.add(new Student("Dante", "Alighieri"));
+//        studentlist.add(new Student("Leon", "Trotsky"));
+//        studentlist.add(new Student("John", "Milton"));
+//        studentlist.add(new Student("Duke", "Ellington"));
+//        studentlist.add(new Student("Miles", "Davis"));
+//        studentlist.add(new Student("Tyler", "Durden"));
+//        studentlist.add(new Student("Napoleon", "Bonaparte"));
+//        studentlist.add(new Student("Harriet", "Stowe"));
+//        studentlist.add(new Student("Emily", "Bronte"));
+//
+//
+//
+//        teacherList.add(new Teacher("John", "Keating"));
+//        teacherList.add(new Teacher("Louanne", "Johnson"));
+//        teacherList.add(new Teacher("Maurice", "Phipps"));
+
 
     }
 }

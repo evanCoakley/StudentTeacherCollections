@@ -9,7 +9,7 @@ public class Student {
 
     public Student() {}
 
-    public Student(String firstName, String lastName, int id, int grade) {
+    public Student(int id, int grade, String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
@@ -66,6 +66,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return firstName +" "+ lastName +", " + id + " " + grade + ".";
+        return id + " " + grade + ".";
     }
 }
